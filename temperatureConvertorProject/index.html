@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tempeture Convertor project</title>
+
+        <!-- ************************* Style **************************************** -->
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+
+            body{
+                background: #051805;
+            }
+
+            .box{
+                width: 40%;
+                min-height: 100px;
+                margin: 200px auto;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+                & span{
+                    position: absolute;
+                    top: 5px;
+                    left: 45%;
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+                & input, & select{
+                    width: 50%;
+                    float: left;
+                    padding: 10px;
+                    font-size: 20px;
+                    border: none;
+                    background: #eee;
+                    outline: none;
+
+                    &:focus{
+                        background-color: #d3d3d3 !important;
+                    }
+                }
+                & select{
+                    background-color: #ddd;
+                }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <input type="text" placeholder="Enter Value...." id="textBox1" value="0" />
+            <span>=</span>
+            <input type="text" placeholder="Enter Value...." id="textBox2" value="-17.778" />
+            
+            <select name="selectParametors" id="pera1">
+                <option value="fahrenhite">Fahrenhite</option>
+                <option value="Celcious">Celcious</option>
+            </select>
+
+            <select name="selectParametors" id="pera2" disabled>
+                <option value="Celcious">Celcious</option>
+                <option value="fahrenhite">Fahrenhite</option>
+            </select>
+        </div>
+
+        <script>
+
+            let pera1 = document.querySelector("#pera1");
+            let pera2 = document.querySelector("#pera2");
+            let textBox1 = document.querySelector("#textBox1");
+            let textBox2 = document.querySelector("#textBox2");
+
+            textBox1.addEventListener("input", (event) =>{
+                let cValue = event.target.value;
+                if(pera1.value == "fahrenhite"){
+                    let calculateValue = (cValue - 32) * 5/9 ;
+                    textBox2.value = calculateValue.toFixed(3);
+                }else{
+                    textBox2.value = "32.000"
+                    let calculateValue = (cValue * 9/5) + 32 ;
+                    textBox2.value = calculateValue.toFixed(3);
+                }
+            })
+
+            pera1.addEventListener("change", (event) =>{
+                let cValue = textBox1.value;
+                if(pera1.value == "fahrenhite"){
+                    let calculateValue = (cValue - 32) * 5/9 ;
+                    textBox2.value = calculateValue.toFixed(3);
+                    pera2.value = "Celcious"
+                }else{
+                    textBox2.value = "32.000"
+                    pera2.value = "fahrenhite"
+                    let calculateValue = (cValue * 9/5) + 32 ;
+                    textBox2.value = calculateValue.toFixed(3);
+                }
+            })
+            
+
+
+        </script>
+    </body>
+</html>
