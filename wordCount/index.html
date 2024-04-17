@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hellow world</h1>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Word and cherectors count App.</title>
+
+        <!-- ************************** Start internal styling ****************************** -->
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                background: #0e1e0e;
+            }
+            .box{
+                width: 80%;
+                min-height: 300px;
+                margin: 100px auto;
+                border-radius: 10px;
+                overflow: hidden;
+                & textarea{
+                    width: 100%;
+                    height: 250px;
+                    resize: none;
+                    border: none;
+                    outline: none;
+                    padding: 10px;
+                    font-size: 18px;
+                    background: #ddd;
+                    color: #0e1e0e;
+                }
+                .word, .charectors, .sentences{
+                    display: inline-block;
+                    width: 33.33%;
+                    float: left;
+                    background-color: green;
+                    padding: 10px 20px;
+                    font-size: 18px;
+                    color: #ddd;
+                    font-weight: bold;
+                    font-family: sans-serif;
+                }
+                .word{
+                    background: #415241;
+                }
+                .charectors{
+                    background: #024002;
+                }
+            }
+
+            @media all and (max-width: 768px){
+                .box{
+                    width: 97%;
+                }
+                .word, .charectors, .sentences{
+                    padding: 5px !important;
+                    min-height: 80px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ******************** Start creating message box ******************************* -->
+        <div class="box">
+            <textarea placeholder="Enter message here...."></textarea>
+            <div class="charectors">Total Charectors :- <span></span></div>
+            <div class="word">Total Words :- <span></span></div>
+            <div class="sentences">Total Sentences :- <span></span></div>
+        </div><!--***** End of message box-->
+
+
+        <script>
+            let textarea = document.querySelector("textarea");
+            let totalChars = document.querySelector(".charectors span");
+            const totalWords = document.querySelector(".word span");
+            const totalSentences = document.querySelector(".sentences span");
+            textarea.addEventListener("input", (event) =>{
+                let message = event.target.value;
+                totalChars.innerHTML = message.length;
+                
+               totalWords.innerHTML = message.split(" ").filter(item => item != "").length                
+               
+               totalSentences.innerHTML = message.split(".").filter(item => item != "").length                
+
+
+            })
+        </script>
+
+    </body>
 </html>
