@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Background Changer App</title>
+
+        <!-- ****************************** Start styling **************************************** -->
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+
+            body{
+                background: #1f201f;
+            }
+            .box{
+                width: 300px;
+                min-height: 100px;
+                margin: 200px auto;
+                border-radius: 10px 10px 0 0;
+                overflow: hidden;
+                color: #1f201f;
+                .colorBox,.getColorBox{
+                    width: 50%;
+                    float: left;
+                    height: 60px;
+                    background-color:green;
+                    text-align: center;
+                    padding: 15px;
+
+                    & span{
+                        font-size: 25px;
+                        font-weight: bold;
+                    }
+
+                }
+
+                & button{
+                    width: 50%;
+                    float: left;
+                    padding: 10px 20px;
+                    border-radius: 0;
+                    cursor: pointer;
+                    font-size: 20px;
+                    font-weight: bold;
+                    border: none;
+                    outline: none;
+                }
+                
+            }
+            .box1{
+                width: 300;
+                height: 200px;
+                background: #eee;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="box">
+            <div class="colorBox">
+            </div>
+            <div class="getColorBox">
+                <span>#1f201f</span>
+            </div>
+            <button id="getBtn" style="background: #ddd;">Get Color</button>
+            <button id="applyBtn">Apply</button>
+        </div>
+
+
+        <!-- <div class="box1"></div> -->
+
+        <script>
+            let color = "1d43d287b319c8a56e";
+            let generateColor = "#";
+
+            let colorBox = document.querySelector(".colorBox");
+            setInterval(() => {
+                for(let i = 1; i <= 6; i++){
+                    generateColor += color[Math.floor(Math.random()*color.length-1)+1];
+                }
+
+                colorBox.style.background = generateColor;
+                generateColor = "#";
+
+            }, 1000);
+
+            document.querySelector("#getBtn").addEventListener("click", () =>{
+                let hexColor = "#";
+                let getBgColor = document.querySelector(".colorBox").style.background;
+                let colorArr = getBgColor.slice(4, getBgColor.length-1).split(",");
+                for(let items of colorArr){
+                    hexColor += Number(items).toString(16);
+                }
+                
+                document.querySelector(".getColorBox").style.background = hexColor;
+                document.querySelector(".getColorBox span").innerHTML = hexColor;
+                hexColor = "#"
+
+            });
+
+            document.querySelector("#applyBtn").addEventListener("click", () =>{
+                document.querySelector("body").style.background = document.querySelector(".getColorBox span").innerHTML;
+                
+            })
+            
+        </script>
+
+    </body>
+</html>
