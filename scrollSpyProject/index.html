@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Scroll Spy Project</title>
+
+        <!-- **************************** Start internal styling ************************** -->
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                transition: all 0.2s;
+            }
+            html{
+                /* scroll-behavior: smooth; */
+            }
+            body{
+                background-color: #aaa;
+            }
+            ul li{
+                list-style: none;
+                margin: 0 15px;
+                position: relative;
+                z-index: 2;
+
+                & a{
+                    display: inline-block;
+                    padding: 8px 15px;
+                    color: #ddd;
+                    text-decoration: none;
+                    font-size: 17px;
+                }
+            }
+            nav{
+                width: 100%;
+                padding: 15px 50px;
+                background: #0f1f0f;
+                color: #ddd;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                top: 0;
+                left: 0;
+                z-index: 99;
+            }
+            .bgColor{
+                background-color: #1d351d;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            main section{
+                width: 100%;
+                min-height: 30vh;
+                margin-bottom: 100px;
+                margin-top: 200px;
+                background-color: #1d351d;
+                color: #ddd;
+                text-align: center;
+                padding: 100px 0;
+                font-size: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ******************** Start navBar section ******************************* -->
+        <nav>
+            <h1>Logo</h1>
+            <div class="bgColor"></div>
+            <ul style="display: flex; align-items: center;">
+                <li id="active">
+                    <a href="#home" >Home</a>
+                    <div class="bgColor2"></div>
+                </li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- <li><a href="#location">Location</a></li> -->
+            </ul>
+        </nav><!--*** End of navBar-->
+        
+        <!-- ******************** Start main section ******************************* -->
+        <main>
+            <section id="home">Home</section>
+            <section id="about">About</section>
+            <section id="services">Services</section>
+            <section id="contact">Contact</section>
+            <section id="location">location</section>
+        </main><!--*** End of main-->
+
+        <!-- ******************************* Start script tags *************************** -->
+        <script>
+            /************************ Start logic of change bg color when click user on navManue ******************* */
+            let navManue = document.querySelectorAll("nav li");
+            for(let items of navManue){
+                
+                items.addEventListener("click", (event) =>{
+                    let a = event.target.getBoundingClientRect();
+                    document.querySelector(".bgColor").style.left = Math.ceil(a.x)+"px";
+                    document.querySelector(".bgColor").style.top = Math.ceil(a.top)+"px";
+                    document.querySelector(".bgColor").style.width = Math.ceil(a.width)+"px";
+                    document.querySelector(".bgColor").style.height = Math.ceil(a.height)+"px";
+
+                })
+            }
+            let a = document.querySelector("#active").getBoundingClientRect();
+            document.querySelector(".bgColor").style.left = Math.ceil(a.x)+"px";
+            document.querySelector(".bgColor").style.top = Math.ceil(a.top)+"px";
+            document.querySelector(".bgColor").style.width = Math.ceil(a.width)+"px";
+            document.querySelector(".bgColor").style.height = Math.ceil(a.height)+"px";
+
+            /************************ Start logic of create scrollSpy effect when user scroll window *************** */
+            let mainSection = document.querySelectorAll("main > section");
+            let bgColor = document.querySelector(".bgColor");
+            for(let items of mainSection){
+
+                window.addEventListener("scroll", (event) =>{
+                    if(window.scrollY + 68 >= items.offsetTop && window.scrollY < items.offsetHeight + items.offsetTop){
+                        if(items.id == "home"){
+                            let homeManue = document.querySelector("nav li:nth-child(1)").getBoundingClientRect();                   
+                            bgColor.style.left = Math.ceil(homeManue.x)+"px"
+                            bgColor.style.width = Math.ceil(homeManue.width)+"px"
+                        }else if(items.id == "about"){
+                            let homeManue = document.querySelector("nav li:nth-child(2)").getBoundingClientRect();                   
+                            bgColor.style.left = Math.ceil(homeManue.x)+"px"
+                            bgColor.style.width = Math.ceil(homeManue.width)+"px"
+                        }else if(items.id == "services"){
+                            let homeManue = document.querySelector("nav li:nth-child(3)").getBoundingClientRect();                   
+                            bgColor.style.left = Math.ceil(homeManue.x)+"px"
+                            bgColor.style.width = Math.ceil(homeManue.width)+"px"
+                        }else if(items.id == "contact"){
+                            let homeManue = document.querySelector("nav li:nth-child(4)").getBoundingClientRect();                   
+                            bgColor.style.left = Math.ceil(homeManue.x)+"px"
+                            bgColor.style.width = Math.ceil(homeManue.width)+"px"
+                        }
+
+
+                    }
+                    
+                })
+            }
+            
+        </script><!--*** End of script-->
+    </body>
+</html>
