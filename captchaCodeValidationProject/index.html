@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Captcha Code validation project </title>
+        
+        <!-- ****************** Start styling ******************* -->
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box;}
+            body{
+                background: #082308;
+            }
+            .captaBox{
+                width: 300px;
+                min-height: 100px;
+                margin: 200px auto;
+                border-radius: 10px 10px 0 0;
+                overflow: hidden;
+                color: #ddd;
+                background-color: #ddd;
+                
+                .captcha{
+                    background: url("../../img/captchaBg.jpeg");
+                    width: 100%;
+                    height: 100%;
+                    background-size: cover;
+                    text-align: center;
+                    font-size: 30px;
+                    font-weight: bold;
+                    text-decoration: line-through;
+                    letter-spacing: 3px;
+                }
+
+                & input{
+                    padding: 6px;
+                    font-size: 18px;
+                    border: none;
+                    outline: none;
+                    float: left;
+                    width: 89%;
+                }
+                #resetBtn{
+                    width: 11%;
+                    float: left;
+                    border: none;
+                    cursor: pointer;
+                    & img{
+                        width: 100%;
+                    }
+                }
+                #validate{
+                    width: 100%;
+                    font-size: 20px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="captaBox">
+            <div class="captcha">
+                srwew232
+            </div>
+
+            <input type="text" placeholder="Enter captcha here..." id="enterCaptcha" />
+            <button id="resetBtn" onclick="resetCaptcha()"><img src="../../img/reset.png" alt="resetImg"></button>
+            <button id="validate" onclick="validate()">Validate</button>
+        </div>
+
+        <script>
+            let randomCaptcha = (Math.floor(Math.random()*100000000)+1000).toString(16)
+            document.querySelector(".captcha").innerHTML = randomCaptcha;
+
+            function resetCaptcha(){
+                let randomCaptcha = (Math.floor(Math.random()*100000000)+1000).toString(16)
+                document.querySelector(".captcha").innerHTML = randomCaptcha;
+                document.querySelector("#enterCaptcha").value = "";
+            }
+            function validate(){
+                let randomCaptcha= document.querySelector(".captcha").innerHTML;
+                let enterCaptcha = document.querySelector("#enterCaptcha");
+                if(enterCaptcha.value == randomCaptcha){
+                    alert("Valid Captcha");
+                }else{
+                    alert("Something want wrong!")
+                }
+            }
+        </script>
+
+
+
+    </body>
+</html>
