@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Accordion project</title>
+
+        <!-- ************************* Start internal style ************************************ -->
+        <style>
+            *{margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s;}
+            body{
+                background: #0d140d;
+                color: #ddd;
+                padding-top: 100px;
+                font-family: sans-serif;
+            }
+            .df{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .accordionContainer{
+                width: 50%;
+                min-height: 200px;
+                margin: 20px auto;
+            }
+            .accordionBox{
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            .accordionBox .accordionHeading{
+                width: 100%;
+                padding: 10px;
+                background: #1c271c;
+                cursor: pointer;
+                box-shadow: 0 1px 15px #2f402f60 inset;
+                position: relative;
+                z-index: 20;
+            }
+            .accordionBox .accordionHeading p{
+                pointer-events: none;
+            }
+            .accordionBox .conteint{
+                background-color: #192319;
+                padding: 10px;
+                border-radius: 0px 0px 3px 3px;
+                display: none;
+            }
+            .activeAccContent{
+                display: block !important;
+            }
+            img.activeAccContent{
+                transform: rotate(180deg);
+            }
+            /* ***************************** Start media querry ****************************** */
+            @media all and (max-width:992px){
+                .accordionContainer{
+                    width: 60%;
+                }
+            }
+
+            @media all and (max-width:768px){
+                .accordionContainer{
+                    width: 80%;
+                }
+            }
+        </style><!--*** End of internal styling-->
+    </head>
+    <body>
+        <h1 align="center">Accordion project</h1>
+
+        <div class="accordionContainer">
+            <div class="accordionBox">
+                <div class="accordionHeading">
+                    <p class="df">Accordion heading 1 <img class="activeAccContent" src="../img/angleDown.svg" alt="angleDown" width="15px"></p>
+                </div>
+                <div class="conteint activeAccContent">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eveniet facilis illum ea quisquam aut, totam ipsa vel. Quasi, enim assumenda voluptates libero doloremque recusandae possimus sed, quo quam ratione asperiores facilis labore rem, quibusdam sit minus vitae? Repellendus, iure.
+                </div>
+            </div><!--*** End of accordionBox-->
+
+            <div class="accordionBox">
+                <div class="accordionHeading">
+                    <p class="df">Accordion heading 2 <img src="../img/angleDown.svg" alt="angleDown" width="15px"></p>
+                </div>
+                <div class="conteint">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eveniet facilis illum ea quisquam aut, totam ipsa vel. Quasi, enim assumenda voluptates libero doloremque recusandae possimus sed, quo quam ratione asperiores facilis labore rem, quibusdam sit minus vitae? Repellendus, iure.
+                </div>
+            </div><!--*** End of accordionBox-->
+
+            <div class="accordionBox">
+                <div class="accordionHeading">
+                    <p class="df">Accordion heading 3 <img src="../img/angleDown.svg" alt="angleDown" width="15px"></p>
+                </div>
+                <div class="conteint">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eveniet facilis illum ea quisquam aut, totam ipsa vel. Quasi, enim assumenda voluptates libero doloremque recusandae possimus sed, quo quam ratione asperiores facilis labore rem, quibusdam sit minus vitae? Repellendus, iure.
+                </div>
+            </div><!--*** End of accordionBox-->
+
+            <div class="accordionBox">
+                <div class="accordionHeading">
+                    <p class="df">Accordion heading 4 <img src="../img/angleDown.svg" alt="angleDown" width="15px"></p>
+                </div>
+                <div class="conteint">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eveniet facilis illum ea quisquam aut, totam ipsa vel. Quasi, enim assumenda voluptates libero doloremque recusandae possimus sed, quo quam ratione asperiores facilis labore rem, quibusdam sit minus vitae? Repellendus, iure.
+                </div>
+            </div><!--*** End of accordionBox-->
+
+            <div class="accordionBox">
+                <div class="accordionHeading">
+                    <p class="df">Accordion heading 5 <img src="../img/angleDown.svg" alt="angleDown" width="15px"></p>
+                </div>
+                <div class="conteint">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eveniet facilis illum ea quisquam aut, totam ipsa vel. Quasi, enim assumenda voluptates libero doloremque recusandae possimus sed, quo quam ratione asperiores facilis labore rem, quibusdam sit minus vitae? Repellendus, iure.
+                </div>
+            </div><!--*** End of accordionBox-->
+            
+        </div><!--*** End of accordion container-->
+
+        <!-- ************************ Start internal js logic ****************************** -->
+        <script>
+            let accordionHeading = document.querySelectorAll(".accordionContainer .accordionBox .accordionHeading");
+            for(let items of accordionHeading){
+                items.addEventListener("click", (event) =>{
+                    removeActiveAccContent();
+                    event.target.nextElementSibling.classList.toggle("activeAccContent")
+                   event.target.querySelector("img").classList.toggle("activeAccContent");
+                })
+            }
+
+            function removeActiveAccContent(){
+                for(let items of accordionHeading){
+                    items.nextElementSibling.classList.remove("activeAccContent");
+                    items.querySelector("img").classList.remove("activeAccContent")
+                }
+            }
+
+        </script><!--*** End of script-->
+    </body>
+</html>
