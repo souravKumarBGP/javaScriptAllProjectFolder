@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact Page</title>
+
+        <!-- ******************************* Template file link's *********************** -->
+        <link rel="stylesheet" href="./css/contact.css" />
+        
+    </head>
+    <body>
+        
+        <div class="contactContainer">
+
+            <!-- *********** contact form  -->
+            <form method="post" id="contactForm">
+                <input type="text" placeholder="Enete Name" name="contactName" id="contactName" />
+                <input type="number" placeholder="Enter Phone" name="contactNumber" id="contactNumber" />
+
+                <button type="submit" id="addBtn" >Add</button>
+                <button type="reset">Clear</button>
+                
+            </form>
+            
+            
+            <div class="conrner">
+            </div>
+            <img src="./images/abc.jpeg" alt="" id="profileImg">
+
+            <div class="contactBox">
+                <h2><img src="./images/userImage.svg" alt="userImage" width="20px"> All Contacts</h2>
+                <input type="search" id="searchBox" placeholder="Search here..." />
+
+                <div class="contactItemsBox">
+                   
+                </div>
+
+            </div>
+
+            
+        </div>
+        
+        <!-- *************************** Main template file link's ********************** -->
+        <script src="./js/contact.js"></script>
+    </body>
+</html>

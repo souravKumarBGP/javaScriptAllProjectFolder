@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>javaScript fullPage</title>
+        <!-- ******************** Vender file link's *********************************** -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        
+        <link rel="stylesheet" href="./style.css" />
+        
+    </head>
+    <body>
+        <section class="container">
+
+            <div class="signupForm">
+                <h2>Singup Form</h2>
+                <form action="" method="post" autocomplete="off">
+                    <div class="inputBox">
+                        <input type="text" name="userName" id="userName" placeholder="Enter user name"/>
+                        <p>Something want wrong !</p>
+                    </div><!--End of inputBox-->
+
+                    <div class="inputBox">
+                        <input type="email" name="userEmail" id="userEmail" placeholder="Enter user email" />
+                        <p>Something want wrong !</p>
+                    </div><!--End of inputBox-->
+
+                    <div class="inputBox">
+                        <input type="number" name="userPhoneNumber" id="userPhoneNumber" minlength="10" placeholder="Enter phone number" />
+                        <p>Something want wrong !</p>
+                    </div><!--End of inputBox-->
+
+                    <div class="inputBox">
+                        <input type="password" name="userPassword" id="userPassword" placeholder="Create password" />
+                        <p>Something want wrong !</p>
+                    </div><!--End of inputBox-->
+
+                    <button class="submitBtn" type="submit">Sing Up</button>
+                    <p>You already have an account <span id="loginBtn">Login Now</span></p>
+                </form>
+            </div><!--***** End of signup form-->
+
+            <div class="loginForm">
+                <h2>Login Form</h2>
+                <form action="" method="post" id="loginForm" autocomplete="off">
+
+                    <div class="inputBox">
+                        <input type="email" name="loginEmail" id="userEmail" placeholder="Enter user email" />
+                        <p id="loginEmailError">Something want wrong !</p>
+                    </div><!--End of inputBox-->
+
+                    <div class="inputBox">
+                        <input type="password" name="loginPassword" id="userPassword" placeholder="Create password" />
+                        <p id="loginPasswordError">Something want wrong !</p>
+                    </div><!--End of inputBox-->
+
+                    <button class="submitBtn" type="submit">Login</button>
+                    <p>You don't have an account <span id="signupBtn">SignUp Now</span></p>
+                </form>
+            </div><!--***** End of login form-->
+            
+        </section>
+
+        <!-- ******************************* Vendor file link's *********************************************** -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- ******************************* main template file link's  ************************************** -->
+        <script src="./script.js"></script>
+
+    </body>
+</html>

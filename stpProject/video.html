@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video files</title>
+
+        <!-- *********** main template file link' ************* -->
+        <link rel="stylesheet" href="./css/video.css" />
+
+    </head>
+    <body>
+         
+        <div class="videoContainer">
+            <div class="videoBox">
+                <video>
+                    <source src="https://pagalstatus.com/wp-content/uploads/2024/04/Before-Your-Exam-Whatsapp-Status-Video.mp4?_=8" type="video/mp4" /> 
+                </video>
+
+                <div class="controlsBox">
+                    <div class="progressBox">
+                        <div class="progressBar"> </div>
+                    </div>
+
+                    <div class="controlsBtn">
+                        <p><b><span id="c_time">0 : 0</span> / <span id="dueration">20.22</span></b></p>
+
+                        <div class="playAndPoseBtnBox">
+                            <img id="prevVieeo" src="./images/leftArr.svg" alt="placeholder" width="17px">&nbsp;&nbsp;&nbsp;
+                            <img id="playAndPouseBtn" src="./images/play.svg" alt="placeholder" width="30px">&nbsp;&nbsp;&nbsp;
+                            <img id="nextVideo" src="./images/rightArr.svg" alt="placeholder" width="17px">
+                        </div>
+
+                        <div class="setting">
+                            <input type="range" min="45" max="100" step="2" id="volumeRange" />
+                            <img id="volumeBtn" src="./images/volume.svg" alt="" width="20px">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src="./images/setting.svg" alt="" width="15px">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src="./images/fullScreen.svg" alt="" width="15px">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="videoList">
+                <br/>
+                <h2 align="center">Video List</h2><br/>
+                <div class="addvideoBox" style="display: flex;">
+                    <input type="text" placeholder="Video Name" id="videoName">
+                    <input type="text" placeholder="Video Url" id="videoUrl">
+                    <button id="addVideoBtn">Add</button>
+                </div>
+                <br/>
+                <hr/>
+
+                <div class="videoItems">
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ************** main template file link's ************* -->
+        <script src="./js/video.js"></script>
+    </body>
+</html>

@@ -1,0 +1,92 @@
+@import url("../style.css");
+
+/* ******** Start video container file link's ************* */
+.videoContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.videoBox{
+    width: 70%;
+    height: 520px;
+    & video{
+        width: 100%;
+        height: 85%;
+        object-fit: cover;
+    }
+}
+.videoBox .controlsBox{
+    width: 100%;
+    height: 10%;
+    background-color: #ddd;
+    color: #333;
+    /* overflow: hidden; */
+}
+.videoBox .controlsBox img{
+    cursor: pointer;
+}
+.controlsBox .controlsBtn{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+}
+.controlsBtn .setting{
+    position: relative;
+}
+.controlsBtn .setting #volumeRange{
+    position: absolute;
+    right: 35px;
+    bottom: 70px;
+    transform: rotate(-90deg);
+    appearance: none;
+    width: 100px;
+    height: 10px;
+    background-color: darkgreen;
+}
+#volumeRange::-webkit-slider-thumb{
+    /* appearance: none; */
+    background-color: red;
+    width: 300px !important;
+    color: red !important;
+    
+
+}
+.controlsBox .progressBox{
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #333;
+}
+.progressBox .progressBar{
+    width: 0%;
+    height: 5px;
+    background-color: green;
+    border-radius: 0 20px 20px 0;
+}
+.videoList{
+    width: 30%;
+    height: 100vh;
+    border: 2px solid green;
+    padding: 10px;
+}
+.videoList :is(button, input){
+    border-radius: 0;
+    padding: 5px 3px;
+    cursor: pointer;
+}
+
+.videoItems{
+    overflow-y: auto;
+}
+
+.videoItems .item{
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    & button{
+        width: 49%;
+        margin-top: 5px;
+    }
+}
+

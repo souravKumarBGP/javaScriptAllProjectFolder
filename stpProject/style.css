@@ -1,0 +1,91 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation-duration: 1s !important; 
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+body{
+    color: #ddd;
+    background: #081608;
+    font-family: sans-serif;
+}
+
+/* ********************************************************************************************************
+Start signup and login form styling
+************************************************************************************************************/
+.signupForm, .loginForm{
+    width: 270px;
+    min-height: 150px;
+    margin: 100px auto;
+    background: #0e270e;
+    padding: 10px;
+    display: none;
+}
+:is(.signupForm, .loginForm) h2 {
+    text-align: center;
+    margin-bottom: 17px;
+}
+:is(.signupForm, .loginForm) input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+}
+:is(.signupForm, .loginForm) input:focus{
+    background: #ccc;
+}
+:is(.signupForm, .loginForm) .inputBox{
+    margin-bottom: 15px;
+}
+:is(.signupForm, .loginForm) .inputBox p{
+    color: #b20202;
+    margin-top: 2px;
+    margin-bottom: -3px;
+    display: none;
+    font-size: 15px;
+}
+
+:is(.signupForm, .loginForm) button{
+    background: darkgreen;
+    color: #ddd;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 5px;
+}
+:is(.signupForm, .loginForm) button:hover{
+    background: #098b09;
+}
+:is(.signupForm, .loginForm) form > p{
+    margin: 10px 0 10px;
+    font-size: 13px;
+    text-align: center;
+}
+:is(.signupForm, .loginForm) form > p span{
+    color: #5858f7;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 2px;
+}
+
+.loginForm{
+    display: block;
+}
+
+
+/* ********************************************************************************************************
+Start login form section Styling
+********************************************************************************************************* */
+

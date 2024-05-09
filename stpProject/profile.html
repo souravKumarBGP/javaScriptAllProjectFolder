@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Profile Page</title>
+
+        <!-- ************************ Main template file link' ************************* -->
+        <link rel="stylesheet" href="./css/profile.css" />
+    </head>
+    <body>
+
+        <!-- **************************** Start profile box **************************** -->
+        <section class="profileBox">
+            <h4><b>UPLODE IMAGE</b></h4>
+            <div class="imageBox">
+                <img src="./images/userImage.svg" alt="imageBox" id="userImage" />
+                <input type="file" id="inputBox" name="inputBox" accept=".jpeg, .jpg, .png, .svg" title="Selec Image" />
+            </div><!--**** End of imageBox-->
+            <h4 id="loginUserName">Sourav Kumar</h4>
+            <br/>
+            
+            <button class="nextBtn">Next ></button>
+        </section>
+
+        <!-- **************************** Start AlreadyLogin box **************************** -->
+        <section class="mainProfile">
+            <div class="header">
+                <div class="mainProfileBox">
+                    <img src="./images/abc.jpeg" alt="img" id="mainProfilePic"/>
+                    <h3 id="mainProfileUserName">Sourav Kumar BGP</h3>
+                </div>
+            </div>  
+
+            <div class="app">
+                <a href="./contact.html"><button id="contactBtn">Contact</button></a>
+                <a href="./video.html"><button>Video</button></a>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </section><!--***** End mainProfile-->
+
+        
+        <!-- *********************** Main template js file link's ********************** -->
+        <script src="./js/profile.js"></script>
+    </body>
+</html>
