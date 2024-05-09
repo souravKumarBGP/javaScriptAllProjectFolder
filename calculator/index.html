@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculator project</title>
+        <meta name="discreption" content="this is simple Calculator website" />
+        <meta name="keyword" content="This si calculator project" />
+        <meta name="author" content="Sourav Kumar" />
+        <meta name="robots" content="index,following" />
+        <!-- ******************* Start internal styling ************************* -->
+        <style>
+            /* ********************* common css ****************** */
+            *{margin: 0;  padding: 0; box-sizing: border-box;}
+
+            body{background: #071207; color: #ddd; font-family: sans-serif;}
+
+            /* ************* Start calculatorBox styling ******************* */
+            .calculatorBox{
+                width: 250px;
+                margin: 20px auto;
+                height: 350px;
+                background: #0d210dd8;
+                backdrop-filter: blur(10px);
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px 1px #3d5e3d4c inset;
+                padding: 15px;
+            }
+            .calculatorBox input{
+                width: 100%;
+                padding: 10px;
+                border: none;
+                outline: none;
+                background: #bdcbbd52;
+                border-radius: 2px;
+                box-shadow: 0px 0px 10px 1px #1b2c1b4c inset;
+                margin-top: 15px;
+            }
+            
+            .calculatorBox button{
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                border: none;
+                outline: none;
+                font-weight: bold;
+                background: #071207;
+                color: #ddd;
+                cursor: pointer;
+            }
+
+            .calculatorBox .controlBtnsBox{
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 0 10px;
+            }
+            .calculatorBox .numberBtnsBox{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 12px;
+
+            }
+
+
+
+
+        </style><!--*** End of internal styling-->
+
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+    </head>
+    <body>
+        <br/>
+        <h2 align="center"><b>Calculator</b></h2>        
+
+        <!-- ****************** Start calculator section *********************** -->
+        <section class="calculatorBox">
+            <input type="text" id="ans" value="0" />
+
+            <div class="controlBtnsBox">
+                <button class="crtBtns">C</button>
+                <button class="crtBtns">%</button>
+                <button class="crtBtns">&leftarrow;</button>
+                <button class="crtBtns">/</button>
+            </div>
+
+            <div class="numberBtnsBox">
+                <button class="numbBtns">7</button>
+                <button class="numbBtns">8</button>
+                <button class="numbBtns">9</button>
+                <button class="crtBtns">*</button>
+                <button class="numbBtns">4</button>
+                <button class="numbBtns">5</button>
+                <button class="numbBtns">6</button>
+                <button class="crtBtns">-</button>
+                <button class="numbBtns">1</button>
+                <button class="numbBtns">2</button>
+                <button class="numbBtns">3</button>
+                <button class="crtBtns">+</button>
+                <button class="numbBtns">00</button>
+                <button class="numbBtns">0</button>
+                <button class="numbBtns">.</button>
+                <button class="crtBtns">=</button>
+
+            </div>
+        </section>
+
+        <!-- ****************** Start internal js ****************************** -->
+        <script>
+            
+            let numbBtns = document.querySelectorAll( "button");
+            let input = document.querySelector("input");
+
+            let value = "";
+            let counter = 0;
+            
+            for(let items of numbBtns){
+                items.addEventListener("click", (event) =>{
+                    items.className = "animate__animated animate__heartBeat"
+                    setTimeout(() => {
+                        items.classList.remove("animate__animated", "animate__heartBeat")
+                    }, 400);
+
+                    if(counter == 0){
+                        if(items.innerHTML != "C" && items.innerHTML != "=" && items.innerHTML != "←"){
+                            value += items.innerHTML;
+                            input.value = value;
+
+                        }
+                    }else{
+                        if(items.innerHTML == "+" || items.innerHTML == "-" || items.innerHTML == "X" || items.innerHTML == "%" || items.innerHTML == "/" ){
+                            value = input.value;
+                            value += items.innerHTML;
+                            input.value = value;
+
+                            counter = 0;
+                        }else{
+                            value = input.value;
+                            value += items.innerHTML;
+                            input.value = value;
+
+                            counter = 0;
+
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    
+                    // if(items.innerHTML != "C" && items.innerHTML != "=" && items.innerHTML != "←"){
+                    //     console.log(items.innerHTML)
+                    //     value += items.innerHTML;
+                    //     input.value = value;
+                    // }
+                })
+
+                if(items.innerHTML == "C"){
+                    items.addEventListener("click", () =>{
+                        value = "";
+                        input.value = 0;
+                    });
+                }
+
+                if(items.innerHTML == "←"){
+                    items.addEventListener("click", () =>{
+                        let valueArr = input.value.split("");
+                        value = valueArr.slice(0, valueArr.length-1).join("")
+                        input.value = value;
+                        value = input.value; 
+                    });
+                }
+
+
+                if(items.innerHTML == "="){
+
+                    items.addEventListener("click", () =>{
+                        counter = 1;
+
+                        if(value != ""){
+                            input.value = eval(value);
+                        }
+
+                        value = "";
+
+                    })
+                    
+                }
+            }
+
+
+
+            
+            
+            
+            
+
+        </script><!--*** End of internal script-->
+    </body>
+</html>
