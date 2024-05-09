@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video Testing</title>
+
+        <!-- ************************** Start internal styling ********************** -->
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box; 
+            }
+            body{
+                background: #ddd;
+            }
+
+            /* **************** Start videoContaine styling *************** */
+            .videoContaine{
+                /* border: 2px solid red; */
+                width: 550px;
+                margin: 50px;
+                position: relative;
+            }
+
+            .videoContaine .mainVideo{
+                width: 100%;
+            }
+
+            .videoContaine .videoControlsBox{
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 4px;
+                padding: 13px;
+            }
+
+            .videoControlsBox .progressBox{
+                width: 100%;
+                background: #ddd;
+                cursor: pointer;
+                margin-bottom: 16px;
+            }
+
+            .videoControlsBox .progressBox .progress{
+                width: 0%;
+                height: 4px;
+                cursor: pointer;
+                background-color: #0075ff;
+                position: relative;
+            }
+
+            .videoControlsBox .progressBox .progress::after{
+                content: "";
+                display: block;
+                width: 12px;
+                height: 12px;
+                border-radius: 100%;
+                position: absolute;
+                top: -4px;
+                right: 0;
+                background-color: #0075ff;
+                visibility: hidden;
+            }
+
+            .videoControlsBox .progressBox:hover .progress::after{
+                visibility: visible;
+            }
+
+
+            .videoControlsBox img{
+                width: 15px;
+                cursor: pointer;
+            }
+
+            .videoControlsBox .controls :is(.left, .middle, .right){
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: #ddd;
+            }
+            
+            .videoControlsBox .controls .left input{
+                width: 60px;
+                height: 4px;
+                background-color: #ddd;
+                border-radius: 0 10px 10px 0;
+                cursor: pointer;
+                border: none;
+                -moz-outline: none;
+            }
+
+            .videoControlsBox .controls{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .controls >div:nth-child(2){
+                width: 10%;
+                margin-left: -120px;
+            }
+
+            input::-moz-range-progress{
+                background-color: #0075ff;
+                outline: none;
+                border: none;
+                height: 4px;
+            }
+
+            input::-webkit-slider-thumb{
+                appearance: none !important;
+                background-color: #0075ff;
+                border: none;
+                outline: none;
+                border-radius: 100%;
+                height: 12px;
+                width: 12px;
+            }
+            
+            input::-moz-range-thumb{
+                appearance: none !important;
+                background-color: #0075ff;
+                border: none;
+                outline: none;
+                border-radius: 100%;
+                height: 12px;
+                width: 12px;
+            }
+            
+        </style><!--***** End of internal styling-->
+        
+    </head>
+    <body>
+        
+        <!-- ****************************** Start video section ********************************** -->
+        <div class="videoContaine">
+            <video class="mainVideo" src="https://pagalstatus.com/wp-content/uploads/2024/04/Before-Your-Exam-Whatsapp-Status-Video.mp4?_=8" type="video/mp4"></video>
+
+            <div class="videoControlsBox">
+
+                <div class="progressBox">
+                    <div class="progress"></div>
+                </div><!--***** End of progressBox-->
+
+                <div class="controls">
+                    <div class="left">
+                        <img id="volumeImg" src="./img/volume.svg" alt="voluem" />
+                        <input id="volumeRange" type="range" name="volumeRange" step="any" min="0" max="1" />
+
+                        <span class="timeLine">
+                            <small class="currentTime"><big>00:00</big></small>
+                            <small class="seperator"><big> / </big></small>
+                            <small class="videoDueration"><big>00:00</big></small>
+                        </span>
+                    </div><!--***** End of left item-->
+
+                    <div class="middle">
+                        <img class="skipLeft" src="./img/leftBtn.svg" alt="" style="width: 12px;"/>
+                        <img class="palyAndPause" src="./img/playBtn.svg" alt="" style="width: 19px; margin: 0 13px;" />
+                        <img class="skipRight" src="./img/rightBtn.svg" alt="" style="width: 12px;" />
+                    </div><!--***** End of middle item-->
+
+                    <div class="right">
+                        <img src="./img/setting.svg" alt="">
+                        <img class="picInPic" src="./img/picinpic.svg" alt="" style="margin-left: 13px;">
+                        <img class="fullScreen" src="./img/fullScreen.svg" alt="" style="margin-left: 13px;">
+                    </div><!--***** End of right item-->
+                    
+                </div><!--***** End of controls-->
+
+
+            </div><!--***** End of video controlsBox-->
+        </div><!--***** End of video containr-->
+
+
+        <script src="./script.js"></script>
+
+    </body>
+</html>
