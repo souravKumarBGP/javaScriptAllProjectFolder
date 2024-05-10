@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Form</title>
+
+        <!-- ******************** Start internal styling **************************** -->
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .container {
+                width: 50%;
+                margin: 50px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 7px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+
+            button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: none;
+                background-color: #007bff;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            .error{
+                color: #bd1f03;
+            }
+        </style><!--***** End of internal styling-->
+
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form action="#" method="POST" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="c_password">Confirm Password</label>
+                    <input type="password" id="c_password" name="c_password" required>
+                </div>
+                <div class="form-group">
+                    <label for="c_password">Select Gender</label>
+                    <input type="radio" id="male" name="gender" required value="male">: Male
+                    <input type="radio" id="fmale" name="gender" required value="female">: Female
+                    <input type="radio" id="other" name="gender" required value="other">: Others
+                    <label for="gender" class="error"></label>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" name="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- https://script.google.com/macros/s/AKfycby6HjQSUAl92mxBew_cekVRyCM_8m1BEqc3QoCxJJoIRucB49hMgeWukm4011zoNcEatQ/exec -->
+
+        <!-- **************************** Start or internal js logic ****************************** -->
+        <script src="./js/jquery_3_7_1.min.js"></script>
+        <script src="./js/jquery.validate.min.js"></script>
+
+        <!-- ********************************** logic of form validation using validate.js ***************************** -->
+        <script>
+            $(document).ready(function(){
+                $("#contactForm").validate({
+                    rules:{
+                        userName:{
+                            
+                        }
+                    },
+                    messages:{
+                        userName:{
+                            required: "Enter the full name !"
+                        },
+                        email:{
+                            required: "Enter your email id !"
+                        },
+                        password:{
+                            required: "Create your password !"
+                        },
+                        c_password:{
+                            required: "Enter the confirm password !"
+                        }
+
+                    }
+                })
+            });
+        </script><!--***** End of from validation-->
+
+        <!-- ********************************** Logic of save form data in excelSheet using Ajax Request **************** -->
+        <script>
+            let form = document.querySelector("form");
+            form.addEventListener("submit", (event) =>{
+
+                setTimeout(() => {
+                    let inputs = document.querySelectorAll('input, textarea');
+                    let validInputs = document.querySelectorAll('input.valid, textarea.valid');
+                    
+                    if(inputs.length == validInputs.length){
+                        event.target.submit.innerHTML = "Submiting...";
+                        
+                        //get form data
+                        let formData = new FormData(form)
+
+                        console.log(formData)
+
+                        // make xhr request
+                        let xhr = new XMLHttpRequest;
+
+                        xhr.getAllResponseHeaders("Content-Type", "application/x-www-form-urlencoded");
+
+                        xhr.open("post", "https://script.google.com/macros/s/AKfycbxV_dWqkfIq1NLa8op44H0tzBaGWDw3BdL0SjuN8sJYpdJQkmGLwwFk45H7RtsCjVJF2A/exec", true);
+
+                        xhr.onload = function(){
+                            if(xhr.status == 200){
+                                let response = xhr.responseText;
+                                console.log(response)
+                                event.target.submit.innerHTML = "Submit";
+                                event.target.reset()
+                            }else{
+                                console.log("Try after some time !");
+                            }
+                        }
+                        
+                        xhr.send(formData);
+                    }
+                }, 10);
+                
+                event.preventDefault();
+            })
+        </script>
+        
+    </body>
+
+</html>
