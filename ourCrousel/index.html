@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Crousel</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body{
+                background-color: #0b1b0b;
+            }
+            .crousel{
+                width: 100%;
+                height: 500px;
+                margin: 30px 0;
+                position: relative;
+            }
+            .crousel > img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: bottom;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+            .crousel .buttons img{
+                width: 30px;
+                position: absolute;
+                top: 45%;
+                left: 2%;
+                cursor: pointer;
+            }
+            .crousel .buttons img:nth-child(2){
+                left: 95%;
+            }
+            .activeSliderImg{
+                display: block !important;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="crousel">
+            <img src="./img/natureImg.jpg" alt="natureImg" />
+            <img class="activeSliderImg" src="./img/natureimg2.jpeg" alt="natureImg" />
+            <img src="./img/natureimg3.jpeg" alt="natureImg" />
+            <img src="./img/natureimg4.jpeg" alt="natureImg" />
+            <img src="./img/natureimg5.jpeg" alt="natureImg" /> 
+            <img src="./img/ntureimg6.jpeg" alt="natureImg" />
+
+            <div class="buttons">
+                <button class="leftSlide">
+                    <img id="leftSlideBtn" src="./img/leftBtn.svg" alt="">
+                    <img id="rightSlideBtn" src="./img/rightBtn.svg" alt="">
+                </button>
+            </div>
+        </div>
+
+        <!-- **************** Start internal styling ******************** -->
+        <script>
+            // ******************************** Select the element ******************************************
+            let images = document.querySelectorAll(".crousel > img"),
+            leftSlideBtn = document.querySelector("#leftSlideBtn"),
+            rightSlideBtn = document.querySelector("#rightSlideBtn");
+
+            // ******************************** Logic of slide image left when user click on leftSlide btn **
+            leftSlideBtn.addEventListener("click", () =>{
+                let currentInd = 0;
+                for(let index in images){ // find the index number of active slide image
+                    if(images[index].className == "activeSliderImg"){
+                        currentInd = Number(index);
+                        images[index].classList.remove("activeSliderImg");
+                    }
+                }
+                
+                if(currentInd == 0){
+                    currentInd = images.length-1;
+                    images[currentInd].classList.add("activeSliderImg");
+                }else{
+                    currentInd -= 1;
+                    images[currentInd].classList.add("activeSliderImg");
+                }
+                
+            });
+
+            rightSlideBtn.addEventListener("click", () =>{
+                let currentInd = 0;
+                for(let index in images){ // find the index number of active slide image
+                    if(images[index].className == "activeSliderImg"){
+                        currentInd = Number(index);
+                        images[index].classList.remove("activeSliderImg");
+                    }
+                }
+                
+                if(currentInd == images.length-1){
+                    currentInd = 0;
+                    images[currentInd].classList.add("activeSliderImg");
+                }else{
+                    currentInd += 1;
+                    images[currentInd].classList.add("activeSliderImg");
+                }
+                
+            });
+            
+            setInterval(() => {
+                let currentInd = 0;
+                for(let index in images){ // find the index number of active slide image
+                    if(images[index].className == "activeSliderImg"){
+                        currentInd = Number(index);
+                        images[index].classList.remove("activeSliderImg");
+                    }
+                }
+                
+                if(currentInd == images.length-1){
+                    currentInd = 0;
+                    images[currentInd].classList.add("activeSliderImg");
+                }else{
+                    currentInd += 1;
+                    images[currentInd].classList.add("activeSliderImg");
+                }
+            }, 2000);
+
+        </script>
+        
+    </body>
+</html>
